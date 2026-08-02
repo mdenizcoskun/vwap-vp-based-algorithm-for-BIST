@@ -1,0 +1,28 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "vwap-ve-volume-profile"
+version = "0.1.0"
+description = "Walk-forward ML momentum research for Borsa Istanbul using VWAP and Volume Profile features"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "matplotlib>=3.7",
+    "numpy>=1.24",
+    "pandas>=2.0",
+    "requests>=2.31",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8.0"]
+
+[project.scripts]
+vwap-volume-profile = "vwap_volume_profile.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["vwap_volume_profile*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

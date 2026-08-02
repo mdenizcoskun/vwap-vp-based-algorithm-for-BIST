@@ -1,0 +1,13 @@
+.DS_Store
+.pytest_cache/
+.venv/
+__pycache__/
+*.py[cod]
+*.zip
+
+# Reproducible but large/local market-data products.
+data/
+outputs/
+**/data_raw/
+**/feature_panel.csv.gz
+**/scored_panel.csv.gz
