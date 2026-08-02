@@ -23,11 +23,11 @@ These results use a current all-BIST universe snapshot applied backward and ther
 
 No single chart proves a persistent trading edge. The six figures below examine different requirements: economic performance, temporal consistency, cross-sectional predictability, execution-cost survival and parameter robustness.
 
-### 1. Net Equity Curve vs XU100
+### 1. Cumulative Return vs XU100
 
-The logarithmic equity curve compares the net strategy with XU100 after the configured turnover cost and dynamic slippage. The strategy grows `1 TL` to approximately `47.95 TL`, versus `9.62 TL` for XU100. This is the clearest economic summary, but an equity curve alone cannot distinguish genuine alpha from model-selection or universe bias.
+The cumulative-return curve compares the net strategy with XU100 after the configured turnover cost and dynamic slippage. The strategy reaches approximately `+4,694.89%`, versus `+861.93%` for XU100. This is the clearest economic summary, but cumulative return alone cannot distinguish genuine alpha from model-selection or universe bias.
 
-![Net equity curve versus XU100](docs/figures/01_equity_vs_xu100.png)
+![Cumulative return versus XU100](docs/figures/01_equity_vs_xu100.png)
 
 ### 2. Temporal Out-of-Sample Performance
 
