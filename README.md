@@ -19,6 +19,46 @@ Period: `2021-05-20` to `2026-05-21`, with `1,255` trading days.
 
 These results use a current all-BIST universe snapshot applied backward and therefore are not a survivorship-bias-free institutional performance claim.
 
+## Financial and Mathematical Evidence
+
+No single chart proves a persistent trading edge. The six figures below examine different requirements: economic performance, temporal consistency, cross-sectional predictability, execution-cost survival and parameter robustness.
+
+### 1. Net Equity Curve vs XU100
+
+The logarithmic equity curve compares the net strategy with XU100 after the configured turnover cost and dynamic slippage. The strategy grows `1 TL` to approximately `47.95 TL`, versus `9.62 TL` for XU100. This is the clearest economic summary, but an equity curve alone cannot distinguish genuine alpha from model-selection or universe bias.
+
+![Net equity curve versus XU100](docs/figures/01_equity_vs_xu100.png)
+
+### 2. Temporal Out-of-Sample Performance
+
+All six chronological slices have positive strategy Sharpe ratios, and the strategy exceeds the XU100 Sharpe in five of six slices. The partial 2021 slice is the exception. This supports temporal persistence, although the slices belong to the same historical test interval and are not an untouched final holdout.
+
+![Temporal out-of-sample performance](docs/figures/12_oos_period_performance.png)
+
+### 3. ML Score Calibration
+
+The lowest score decile has approximately `-0.67%` mean forward excess return, while the highest decile has approximately `+1.32%`, producing a top-minus-bottom spread near `1.99` percentage points. The broadly monotonic relationship and date-level bootstrap intervals indicate that the ML score contains economically meaningful ranking information.
+
+![ML score calibration](docs/figures/13_ml_score_calibration.png)
+
+### 4. Rolling Rank Information Coefficient
+
+The mean daily cross-sectional Spearman rank IC is `0.0414`; approximately `70.7%` of daily IC observations are positive. The 63-day rolling IC is positive for approximately `88.4%` of its available history and ends near `0.0657`. This measures stock-ranking power independently of the final portfolio weighting rules.
+
+![Rolling rank information coefficient](docs/figures/14_rolling_rank_ic.png)
+
+### 5. Transaction-Cost Stress Test
+
+At the base cost setting, Sharpe is `3.019`. Under a `3x` cost and slippage stress, Sharpe remains `1.455`, CAGR remains approximately `37.25%`, and maximum drawdown reaches approximately `-33.53%`. The edge therefore survives materially harsher execution assumptions, though the cost model still requires live calibration.
+
+![Transaction-cost stress test](docs/figures/15_cost_stress_test.png)
+
+### 6. Parameter Robustness
+
+Across 20 combinations of `top_n` and rebalance frequency, every tested Sharpe ratio remains above `2.00`; the median is approximately `2.45` and the maximum is `3.019`. This reduces dependence on one exact parameter choice. Because the documented `12/30` setting is also the best tested cell, model-selection risk must still be acknowledged.
+
+![Parameter robustness](docs/figures/16_parameter_robustness_heatmap.png)
+
 ## Algorithm
 
 1. Discover the Borsa Istanbul universe and exclude warrants, certificates, ETFs, funds, rights and other non-normal instruments.
